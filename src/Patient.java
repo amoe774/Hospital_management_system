@@ -1,15 +1,20 @@
 public class Patient {
-    private String name,gender,phone,disease;
+    private String id,name,gender,phone,disease;
 
 
-    public Patient(String name,String gender,String phone,String disease){
+    public Patient(String id,String name,String gender,String phone,String disease){
+        this.id = id;
         this.name = name;
         this.gender = gender;
         this.phone = phone;
-//        this.disease = disease;
+        this.disease = disease;
+
 
     }
     // getters to access th private variables;
+    public String getId(){
+        return id;
+    }
     public String getName(){
         return name;
     }
@@ -22,12 +27,12 @@ public class Patient {
     public  String getDisease(){
         return disease;
     }
-//    public String getId(){
-//        return id;
-//    }
+
 
     //setters to set new values for the variables
-
+    public void setId(String newId){
+        id = newId;
+    }
     public void setName(String newName){
         name = newName;
     }
@@ -46,9 +51,10 @@ public class Patient {
 
     @Override
     public String toString(){
-        return "Name: " + name +
-                "Gender: " + gender +
-                "Phone: " + phone +
-                "Disease: " + disease;
+        return "\nPatientId: " + id +
+                "\nName: " + name +
+                "\nGender: " + gender +
+                "\nPhone: " + phone +
+                "\nDisease: " + disease;
     }
 }
