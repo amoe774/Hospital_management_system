@@ -3,10 +3,24 @@ import java.util.*;
 public class PatientManager {
     //creating list to store patients
     Scanner sc = new Scanner(System.in);
-    ArrayList<Patient> patients = new ArrayList<>();
+    private final ArrayList<Patient> patients = new ArrayList<>();
+
+    //checkin if patient id exists in the system
+    public boolean ifExists(String id){
+        for(Patient p : patients){
+            if(p.getId().equalsIgnoreCase(id)){
+                return true;
+            }
+        }
+        return false;
+    }
 
     //method to add patient in the system
     public void addPatient(Patient p){
+       if(ifExists(p.getId())){
+           System.out.println("Duplicate id detected !!!");
+           return;
+       }
         patients.add(p);
         System.out.println("patient added");
     }

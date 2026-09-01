@@ -4,9 +4,10 @@ public class MainHelper extends Main {
     static Scanner sc = new Scanner(System.in);
 
     PatientManager p_manager = new PatientManager();
+    DoctorManager  d_manager = new DoctorManager();
 
 
-    //loading patient menu to y=the main class
+    //loading methods to the main class
     @Override
      void load_patient(){
         while (true){
@@ -76,4 +77,77 @@ public class MainHelper extends Main {
 
         }
     }
+
+    @Override
+    void load_doctor(){
+        while (true){
+            //creating doctors main menu
+
+            System.out.println("\nWELCOME TO DOCTORS DASHBOARD");
+
+            System.out.println("1. Add doctor");
+            System.out.println("2. Search doctor");
+            System.out.println("3. Delete doctor");
+            System.out.println("4. Update doctor");
+            System.out.println("5. View all doctors");
+            System.out.println("6. Main menu");
+
+
+            //getting user input
+            System.out.print("\nEnter your choice: ");
+            int choice = sc.nextInt();
+            sc.nextLine();
+
+            switch (choice){
+
+                case 1:
+                    //adding doctor to the system
+                    System.out.print("Enter doctor id: ");
+                    String id = sc.nextLine();
+                    System.out.print("Enter doctor name: ");
+                    String name = sc.nextLine();
+                    System.out.print("Enter doctor specialization: ");
+                    String spec = sc.nextLine();
+                    System.out.print("Enter doctor phone: ");
+                    String phone = sc.nextLine();
+                    System.out.print("Enter doctor email: ");
+                    String mail = sc.nextLine();
+
+                    Doctor docs = new Doctor(id,name,spec,phone,mail);
+                    d_manager.addDoctor(docs);
+                    break;
+
+                case 2:
+                    //searching doctor in the system
+                    System.out.print("Enter doctor id to search: ");
+                    String pId = sc.nextLine();
+
+                    Doctor found = d_manager.searchDoctor(pId);
+
+                    if(found != null){
+                        System.out.println(found);
+                    }else{
+                        System.out.println("Doctor not available in the system!!");
+                    }
+                    break;
+
+                case 3:
+                    System.out.println("System update in progress!!");
+                    break;
+                case 4:
+                    System.out.println("System checkup in progress!!");
+                    break;
+                case 5:
+                    System.out.println(" update in progress!!");
+                    break;
+                case 6:
+                    return;
+                default:
+                    System.out.println("Please choose fro the menu!!");
+
+            }
+        }
+    }
+
+
 }
