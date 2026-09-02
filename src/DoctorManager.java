@@ -23,7 +23,7 @@ public class DoctorManager {
             return;
         }
         doctors.add(d);
-        System.out.println("patient added");
+        System.out.println("Doctor added successfully");
     }
 
     //searching doctor in the system
@@ -45,7 +45,7 @@ public class DoctorManager {
     }
 
     //updating doctor using id
-    public void updatePatient(){
+    public void updateDoctor(){
         System.out.print("Enter Doctor id to update: ");
         String newDoc = sc.nextLine();
 
@@ -74,11 +74,8 @@ public class DoctorManager {
                 System.out.println("Doctor updated successfully");
 
             }
-
-            else{
-                System.out.println("No match id found!!");
-            }
         }
+        System.out.println("No doctor id match found in the system!!");
     }
 
     //method to view all doctors in the system

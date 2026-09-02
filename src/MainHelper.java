@@ -132,13 +132,15 @@ public class MainHelper extends Main {
                     break;
 
                 case 3:
-                    System.out.println("System update in progress!!");
+                    System.out.print("Enter doctor id to delete: ");
+                    String deleteId = sc.nextLine();
+                    d_manager.deleteDoctor(deleteId);
                     break;
                 case 4:
-                    System.out.println("System checkup in progress!!");
+                    d_manager.updateDoctor();
                     break;
                 case 5:
-                    System.out.println(" update in progress!!");
+                    d_manager.viewAllPatients();
                     break;
                 case 6:
                     return;
