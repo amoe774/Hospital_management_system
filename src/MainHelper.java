@@ -1,10 +1,13 @@
 import java.util.Scanner;
+import java.time.*;
+
 
 public class MainHelper extends Main {
     static Scanner sc = new Scanner(System.in);
 
     PatientManager p_manager = new PatientManager();
     DoctorManager  d_manager = new DoctorManager();
+    AppointmentManager a_manager = new AppointmentManager();
 
 
     //loading methods to the main class
@@ -150,6 +153,61 @@ public class MainHelper extends Main {
             }
         }
     }
+
+
+
+    @Override
+    void load_appointment(){
+        //creating function to find patient
+
+        while(true){
+            System.out.println("\n--WELCOME TO APPOINTMENT DASHBOARD--");
+            System.out.println("1. Book Appointment");
+            System.out.println("2. Search Appointment");
+            System.out.println("3. Update Appointment");
+            System.out.println("4. Delete Appointment");
+            System.out.println("5. View All Appointments");
+            System.out.println("6. Main menu");
+
+            System.out.println("Enter your choice: ");
+            int choice = sc.nextInt();
+            sc.nextLine();
+
+            switch (choice){
+                case 1:
+                    System.out.print("Enter appointment id: ");
+                    String aptId = sc.nextLine();
+                    System.out.print("Enter doctor id: ");
+                    String dId = sc.nextLine();
+                    System.out.print("Enter patient id: ");
+                    String Pid = sc.nextLine();
+                    System.out.print("Enter time: ");
+                    String Atime = sc.nextLine();
+                    LocalTime time = LocalTime.parse(Atime);
+                    System.out.print("Enter date: ");
+                    String Adate = sc.nextLine();
+                    LocalDate  date = LocalDate.parse(Adate);
+
+                    //finding doctor and patient
+                   Patient pObj = p_manager.searchPatient(Pid);
+                   Doctor dObj = d_manager.searchDoctor(dId);
+
+                   if(pObj == null){
+                       System.out.println("No patient found!!!");
+                       return;
+                   }
+                   if(dObj==null){
+                       System.out.println("No doctor found!!");
+                       return;
+                   }
+
+                   Appointment newApt = new Appointment(aptId,pObj,dObj,time,date);
+                   a_manager.bookApt(newApt);
+            }
+
+        }
+    }
+
 
 
 }

@@ -5,6 +5,7 @@ public abstract class Main{
    static  Scanner sc = new Scanner(System.in);
      abstract void  load_patient();
      abstract void load_doctor();
+     abstract void load_appointment();
 
      public static void main(String[]args){
          boolean isRunning = true;
@@ -28,7 +29,7 @@ public abstract class Main{
                     m1.load_doctor();
                     break;
                 case 3:
-                   System.out.println("chillax case handling in progress . patience amigo!!");
+                 m1.load_appointment();
                    break;
                 case 4:
                     isRunning = false;

@@ -17,11 +17,17 @@ public class DoctorManager {
     }
 
     //method to add doctor in the system
+    int doctorsIn = 0;
     public void addDoctor(Doctor d){
         if(ifExists(d.getId())){
             System.out.println("Duplicate id detected !!!");
             return;
+        } else if (doctorsIn>1) {
+            System.out.println("Doctor limit reached in the hospital!!");
+            return;
+
         }
+        doctorsIn++;
         doctors.add(d);
         System.out.println("Doctor added successfully");
     }
