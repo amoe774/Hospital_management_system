@@ -7,6 +7,11 @@ public abstract class Main{
      abstract void load_doctor();
      abstract void load_appointment();
 
+
+     //FUTURE UPDATES
+    //add maximum doctor number in hospital and patients
+    //number of rooms occupied by patients
+    //
      public static void main(String[]args){
          boolean isRunning = true;
         MainHelper m1 = new MainHelper() ;
