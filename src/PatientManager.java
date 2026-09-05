@@ -3,7 +3,7 @@ import java.util.*;
 public class PatientManager {
     //creating list to store patients
     Scanner sc = new Scanner(System.in);
-    protected final ArrayList<Patient> patients = new ArrayList<>();
+    private final ArrayList<Patient> patients = new ArrayList<>();
 
     //checkin if patient id exists in the system
     public boolean ifExists(String id){

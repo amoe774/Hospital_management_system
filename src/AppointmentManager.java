@@ -2,7 +2,7 @@ import java.util.*;
 import java.time.*;
 
 public class AppointmentManager{
-    private ArrayList<Appointment> appointments = new ArrayList<>();
+    private final ArrayList<Appointment> appointments = new ArrayList<>();
 
     public Appointment bookAppointment(List<Patient>patients,List<Doctor>doctors,
                                        String patientId,String doctorId,LocalDate date,LocalTime time){
@@ -61,5 +61,10 @@ public class AppointmentManager{
         System.out.println("Appointment added");
 
     }
+    //search appointment
+    //update appointment
+    //delete appointment
+    //view all appointments
+
 
 }

@@ -13,7 +13,7 @@ public class MainHelper extends Main {
     //loading methods to the main class
     @Override
      void load_patient(){
-        while (true){
+        while (true) {
             System.out.println("\n--WELCOME TO PATIENT DASHBOARD MENU--");
             System.out.println("1.Add Patient");
             System.out.println("2.Search Patient");
@@ -26,7 +26,7 @@ public class MainHelper extends Main {
             int choice = sc.nextInt();
             sc.nextLine();
 
-            switch (choice){
+            switch (choice) {
                 case 1:
                     //adding patient to the system
                     System.out.print("Enter patient id: ");
@@ -40,7 +40,7 @@ public class MainHelper extends Main {
                     System.out.print("Enter patient disease: ");
                     String disease = sc.nextLine();
 
-                    Patient manager = new Patient(id,name,gender,phone,disease);
+                    Patient manager = new Patient(id, name, gender, phone, disease);
                     p_manager.addPatient(manager);
                     break;
                 case 2:
@@ -50,10 +50,9 @@ public class MainHelper extends Main {
 
                     Patient found = p_manager.searchPatient(searchId);
 
-                    if(found != null){
+                    if (found != null) {
                         System.out.println(found);
-                    }
-                    else{
+                    } else {
                         System.out.println("Patient not available in the system!!");
                     }
 
@@ -83,25 +82,19 @@ public class MainHelper extends Main {
 
     @Override
     void load_doctor(){
-        while (true){
+        while (true) {
             //creating doctors main menu
 
-            System.out.println("\nWELCOME TO DOCTORS DASHBOARD");
-
             System.out.println("1. Add doctor");
-            System.out.println("2. Search doctor");
             System.out.println("3. Delete doctor");
-            System.out.println("4. Update doctor");
             System.out.println("5. View all doctors");
-            System.out.println("6. Main menu");
-
 
             //getting user input
             System.out.print("\nEnter your choice: ");
             int choice = sc.nextInt();
             sc.nextLine();
 
-            switch (choice){
+            switch (choice) {
 
                 case 1:
                     //adding doctor to the system
@@ -116,7 +109,7 @@ public class MainHelper extends Main {
                     System.out.print("Enter doctor email: ");
                     String mail = sc.nextLine();
 
-                    Doctor docs = new Doctor(id,name,spec,phone,mail);
+                    Doctor docs = new Doctor(id, name, spec, phone, mail);
                     d_manager.addDoctor(docs);
                     break;
 
@@ -127,9 +120,9 @@ public class MainHelper extends Main {
 
                     Doctor found = d_manager.searchDoctor(pId);
 
-                    if(found != null){
+                    if (found != null) {
                         System.out.println(found);
-                    }else{
+                    } else {
                         System.out.println("Doctor not available in the system!!");
                     }
                     break;
@@ -154,13 +147,10 @@ public class MainHelper extends Main {
         }
     }
 
-
-
-    @Override
-    void load_appointment(){
+    @Override void load_appointment(){
         //creating function to find patient
 
-        while(true){
+        while(true) {
             System.out.println("\n--WELCOME TO APPOINTMENT DASHBOARD--");
             System.out.println("1. Book Appointment");
             System.out.println("2. Search Appointment");
@@ -169,11 +159,10 @@ public class MainHelper extends Main {
             System.out.println("5. View All Appointments");
             System.out.println("6. Main menu");
 
-            System.out.println("Enter your choice: ");
             int choice = sc.nextInt();
             sc.nextLine();
 
-            switch (choice){
+            switch (choice) {
                 case 1:
                     System.out.print("Enter appointment id: ");
                     String aptId = sc.nextLine();
@@ -185,29 +174,45 @@ public class MainHelper extends Main {
                     String Atime = sc.nextLine();
                     LocalTime time = LocalTime.parse(Atime);
                     System.out.print("Enter date: ");
-                    String Adate = sc.nextLine();
-                    LocalDate  date = LocalDate.parse(Adate);
+                    String A_date = sc.nextLine();
+                    LocalDate date = LocalDate.parse(A_date);
 
                     //finding doctor and patient
-                   Patient pObj = p_manager.searchPatient(Pid);
-                   Doctor dObj = d_manager.searchDoctor(dId);
+                    Patient pObj = p_manager.searchPatient(Pid);
+                    Doctor dObj = d_manager.searchDoctor(dId);
 
-                   if(pObj == null){
-                       System.out.println("No patient found!!!");
-                       return;
-                   }
-                   if(dObj==null){
-                       System.out.println("No doctor found!!");
-                       return;
-                   }
+                    if (pObj == null) {
+                        System.out.println("\ninvalid patient id !!");
+                        return;
+                    }
+                    if (dObj == null) {
+                        System.out.println("\nInvalid doctor id!!");
+                        return;
+                    }
 
-                   Appointment newApt = new Appointment(aptId,pObj,dObj,time,date);
-                   a_manager.bookApt(newApt);
+                    Appointment newApt = new Appointment(aptId, pObj, dObj, time, date);
+                    a_manager.bookApt(newApt);
+
+                case 2:
+                    //search appointments
+                    break;
+                case 3:
+                    //update appointment
+                    break;
+                case 4:
+                    // delete appointment
+                    break;
+                case 5:
+                    // view all appointments
+                    break;
+                case 6:
+                    return;
+                default:
+                    System.out.println("Please choose from the main menu!!");
             }
 
         }
     }
-
 
 
 }
